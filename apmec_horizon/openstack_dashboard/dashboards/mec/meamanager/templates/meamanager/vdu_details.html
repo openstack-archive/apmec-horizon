@@ -1,0 +1,59 @@
+{% load i18n %}
+<head>
+</head>
+<body>
+<b><h4>{% trans "MEA information" %}<br/></b></h4>
+<hr class="header_rule">
+<div class="detail">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ mea.mea.name }}</dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ mea.mea.id }}</dd>
+    <dt>{% trans "Tenant ID" %}</dt>
+    <dd>{{ mea.mea.tenant_id }}</dd>
+    <dt>{% trans "Description" %}</dt>
+    <dd>{{ mea.mea.description }}</dd>
+    <dt>{% trans "Status" %}</dt>
+    <dd>{{ mea.mea.status|title }}</dd>
+    <dt>{% trans "Created" %}</dt>
+    <dd>{{ mea.mea.created_at|parse_isotime }}</dd>
+    <dt>{% trans "Updated" %}</dt>
+    <dd>{{ mea.mea.updated_at|parse_isotime }}</dd>
+    <dt>{% trans "Stack ID" %}</dt>
+    <dd>{{ mea.mea.instance_id }}</dd>
+    <dt>{% trans "MEAD ID" %}</dt>
+    <dd>{{ mea.mea.mead_id }}</dd>
+    <dt>{% trans "VIM ID" %}</dt>
+    <dd>{{ mea.mea.vim_id }}</dd>
+    <dt>{% trans "Error reason" %}</dt>
+    <dd>{{ mea.mea.error_reason }}</dd>
+  </dl>
+
+  <h4>{% trans "Mgmt IP Addresses" %}</h4>
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    {% for key, value in mea.mea.mgmt_url.items %}
+      <dt>{{ key|title }}</dt>
+      <dd>{{ value }}</dd>
+    {% endfor %}
+  </dl>
+
+  <h4>{% trans "Placement Attributes" %}</h4>
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    {% for key, value in mea.mea.placement_attr.items %}
+      <dt>{{ key|title }}</dt>
+      <dd>{{ value }}</dd>
+    {% endfor %}
+  </dl>
+
+  <h4>{% trans "Attributes" %}</h4>
+  <hr class="header_rule">
+    <pre style="white-space:pre-line;">
+      {{ mea.mea.attributes }}
+    </pre>
+
+</div>
+
+</body>
