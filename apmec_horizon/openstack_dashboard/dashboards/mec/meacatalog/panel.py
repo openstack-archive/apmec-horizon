@@ -13,10 +13,11 @@
 # under the License.
 
 
+from apmec_horizon.openstack_dashboard.dashboards.mec import dashboard
+
 from django.utils.translation import ugettext_lazy as _
 
 import horizon
-from apmec_horizon.openstack_dashboard.dashboards.mec import dashboard
 
 
 class Meacatalog(horizon.Panel):

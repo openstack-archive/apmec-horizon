@@ -45,8 +45,8 @@ class MESCatalogTab(tabs.TableTab):
             mesds = api.apmec.mesd_list(self.request)
             for mesd in mesds:
                 item = MESCatalogItem(mesd['name'],
-                                     mesd['description'],
-                                     mesd['id'])
+                                      mesd['description'],
+                                      mesd['id'])
                 instances.append(item)
             return instances
         except Exception:
@@ -87,7 +87,7 @@ class MESDEventsTab(tabs.TableTab):
             self._has_more = True
             utils.EventItemList.clear_list()
             events = api.apmec.events_list(self.request,
-                                            self.tab_group.kwargs['mesd_id'])
+                                           self.tab_group.kwargs['mesd_id'])
             for event in events:
                 evt_obj = utils.EventItem(
                     event['id'], event['resource_state'],

@@ -92,7 +92,7 @@ class VIMEventsTab(tabs.TableTab):
             self._has_more = True
             utils.EventItemList.clear_list()
             events = api.apmec.events_list(self.request,
-                                            self.tab_group.kwargs['vim_id'])
+                                           self.tab_group.kwargs['vim_id'])
             for event in events:
                 evt_obj = utils.EventItem(
                     event['id'], event['resource_state'],

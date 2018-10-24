@@ -10,6 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from apmec_horizon.openstack_dashboard import api
+from apmecclient.common.exceptions import NotFound
 
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
@@ -19,8 +21,6 @@ from horizon import messages
 from horizon import tables
 
 from openstack_dashboard import policy
-from apmec_horizon.openstack_dashboard import api
-from apmecclient.common.exceptions import NotFound
 
 
 class MESManagerItem(object):
@@ -90,9 +90,9 @@ class MESUpdateRow(tables.Row):
             if not item:
                 # Add an item entry
                 item = MESManagerItem(mes['name'], mes_desc_str,
-                                     str(vim),
-                                     mes['status'], mes['id'],
-                                     mes['error_reason'])
+                                      str(vim),
+                                      mes['status'], mes['id'],
+                                      mes['error_reason'])
             else:
                 item.description = mes_desc_str
                 item.status = mes['status']

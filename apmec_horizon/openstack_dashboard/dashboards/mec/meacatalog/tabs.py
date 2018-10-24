@@ -12,15 +12,14 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from apmec_horizon.openstack_dashboard import api
+from apmec_horizon.openstack_dashboard.dashboards.mec.meacatalog import tables
+from apmec_horizon.openstack_dashboard.dashboards.mec import utils
 
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
 from horizon import tabs
-
-from apmec_horizon.openstack_dashboard import api
-from apmec_horizon.openstack_dashboard.dashboards.mec import utils
-from apmec_horizon.openstack_dashboard.dashboards.mec.meacatalog import tables
 
 
 class MEACatalogItem(object):
@@ -49,7 +48,7 @@ class MEACatalogTab(tabs.TableTab):
             self._has_more = False
             catalogs = []
             meads = api.apmec.mead_list(self.request,
-                                         template_source="onboarded")
+                                        template_source="onboarded")
             for mead in meads:
                 s_types = [s_type for s_type in mead['service_types']
                            if s_type != 'mead']
@@ -100,7 +99,7 @@ class MEADEventsTab(tabs.TableTab):
             self._has_more = True
             utils.EventItemList.clear_list()
             events = api.apmec.events_list(self.request,
-                                            self.tab_group.kwargs['mead_id'])
+                                           self.tab_group.kwargs['mead_id'])
             for event in events:
                 evt_obj = utils.EventItem(
                     event['id'], event['resource_state'],

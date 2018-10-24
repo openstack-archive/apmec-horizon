@@ -12,6 +12,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from apmec_horizon.openstack_dashboard import api
+from apmecclient.common.exceptions import NotFound
 
 from django.http import Http404
 from django.utils.translation import pgettext_lazy
@@ -22,8 +24,6 @@ from horizon import messages
 from horizon import tables
 
 from openstack_dashboard import policy
-from apmec_horizon.openstack_dashboard import api
-from apmecclient.common.exceptions import NotFound
 
 
 class MEAManagerItem(object):

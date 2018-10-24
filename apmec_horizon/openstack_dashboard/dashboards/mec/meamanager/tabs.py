@@ -12,13 +12,13 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from apmec_horizon.openstack_dashboard import api
+from apmec_horizon.openstack_dashboard.dashboards.mec.meamanager import tables
+from apmec_horizon.openstack_dashboard.dashboards.mec import utils
+
 from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import tabs
-
-from apmec_horizon.openstack_dashboard import api
-from apmec_horizon.openstack_dashboard.dashboards.mec import utils
-from apmec_horizon.openstack_dashboard.dashboards.mec.meamanager import tables
 
 
 class MEAManagerTab(tabs.TableTab):
@@ -102,7 +102,7 @@ class MEAEventsTab(tabs.TableTab):
             self._has_more = True
             utils.EventItemList.clear_list()
             events = api.apmec.events_list(self.request,
-                                            self.tab_group.kwargs['mea_id'])
+                                           self.tab_group.kwargs['mea_id'])
             for event in events:
                 evt_obj = utils.EventItem(
                     event['id'], event['resource_state'],

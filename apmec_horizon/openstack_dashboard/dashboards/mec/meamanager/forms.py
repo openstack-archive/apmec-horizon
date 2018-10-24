@@ -112,7 +112,7 @@ class DeployMEA(forms.SelfHandlingForm):
 
         try:
             mead_list = api.apmec.mead_list(request,
-                                             template_source='onboarded')
+                                            template_source='onboarded')
             available_choices_mead = [(mea['id'], mea['name']) for mea in
                                       mead_list]
         except Exception as e:

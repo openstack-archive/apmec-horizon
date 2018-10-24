@@ -10,6 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from apmec_horizon.openstack_dashboard import api
+
 from django.forms import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from oslo_log import log as logging
@@ -17,8 +19,6 @@ from oslo_log import log as logging
 from horizon import exceptions
 from horizon import forms
 from horizon import messages
-
-from apmec_horizon.openstack_dashboard import api
 
 LOG = logging.getLogger(__name__)
 
@@ -86,7 +86,7 @@ class DeployMES(forms.SelfHandlingForm):
         try:
             mesd_list = api.apmec.mesd_list(request)
             available_choices_mesd = [(mes['id'], mes['name']) for mes in
-                                     mesd_list]
+                                      mesd_list]
         except Exception as e:
             available_choices_mesd = []
             msg = _('Failed to retrieve available MES Catalog names: %s') % e
@@ -102,8 +102,8 @@ class DeployMES(forms.SelfHandlingForm):
             msg = _('Failed to retrieve available VIM names: %s') % e
             LOG.error(msg)
 
-        self.fields['mesd_id'].choices = [('', _('Select a MES Catalog Name'))
-                                         ]+available_choices_mesd
+        self.fields['mesd_id'].choices =\
+            [('', _('Select a MES Catalog Name'))] + available_choices_mesd
         self.fields['vim_id'].choices = [('',
                                           _('Select a VIM Name'))
                                          ]+available_choices_vims
@@ -157,8 +157,8 @@ class DeployMES(forms.SelfHandlingForm):
             param_val = data['param_values']
             config_val = data['config_values']
             mes_arg = {'mes': {'mesd_id': mesd_id, 'name':  mes_name,
-                             'description': description,
-                             'vim_id': vim_id}}
+                               'description': description,
+                               'vim_id': vim_id}}
             mes_attr = mes_arg['mes'].setdefault('attributes', {})
             if param_val:
                 mes_attr['param_values'] = param_val

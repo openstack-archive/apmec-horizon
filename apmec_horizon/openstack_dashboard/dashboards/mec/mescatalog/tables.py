@@ -10,6 +10,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from apmec_horizon.openstack_dashboard import api
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
@@ -17,7 +18,6 @@ from django.utils.translation import ungettext_lazy
 from horizon import tables
 
 from openstack_dashboard import policy
-from apmec_horizon.openstack_dashboard import api
 
 
 class MyFilterAction(tables.FilterAction):

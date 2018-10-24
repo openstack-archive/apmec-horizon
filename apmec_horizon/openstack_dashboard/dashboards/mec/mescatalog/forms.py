@@ -91,8 +91,8 @@ class OnBoardMES(forms.SelfHandlingForm):
             mesd_name = data['name']
             mesd_description = data['description']
             tosca_arg = {'mesd': {'name': mesd_name,
-                                 'description': mesd_description,
-                                 'attributes': {'mesd': toscal}}}
+                                  'description': mesd_description,
+                                  'attributes': {'mesd': toscal}}}
             mesd_instance = api.apmec.create_mesd(request, tosca_arg)
             messages.success(request,
                              _('MES Catalog entry %s has been created.') %

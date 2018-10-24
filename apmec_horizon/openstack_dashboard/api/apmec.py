@@ -14,12 +14,11 @@
 
 from __future__ import absolute_import
 
-from django.conf import settings
-from oslo_log import log as logging
 from apmecclient.v1_0 import client as apmec_client
-
+from django.conf import settings
 from horizon.utils.memoized import memoized  # noqa
 from openstack_dashboard.api import base
+from oslo_log import log as logging
 
 
 LOG = logging.getLogger(__name__)
