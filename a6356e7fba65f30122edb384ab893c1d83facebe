@@ -1,0 +1,8 @@
+Code-Review+2: Tung Doan <doantungbk.203@gmail.com>
+Workflow+1: Tung Doan <doantungbk.203@gmail.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 15 Nov 2018 11:38:38 +0000
+Reviewed-on: https://review.openstack.org/573542
+Project: openstack/apmec-horizon
+Branch: refs/heads/master
